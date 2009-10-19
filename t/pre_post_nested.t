@@ -6,9 +6,11 @@ use warnings;
 use lib 'lib', 't/lib';
 use Test::More;
 
-plan +Test::More->can('subtest')
-  ? ( tests => 5 )
-  : ( skip_all => 'Need Test::More::subtest() for this test' );
+BEGIN {
+    plan +Test::More->can('subtest')
+        ? ( tests => 5 )
+        : ( skip_all => 'Need Test::More::subtest() for this test' );
+}
 use Test::Aggregate::Nested;
 
 my ( $startup, $shutdown ) = ( 0, 0 );
